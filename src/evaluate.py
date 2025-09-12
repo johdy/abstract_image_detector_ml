@@ -31,6 +31,40 @@ def evaluate_model(model, test_dataset):
     accuracy = (all_predictions == all_labels).float().mean()
     print(f"Test Accuracy: {accuracy.item():.4f}")
 
+def evaluate_on_directory(model, path):
+    from PIL import Image
+    import torchvision.transforms as transforms
+
+    # Ton transform habituel
+    transform = transforms.Compose([
+        transforms.Resize((128, 128)),
+        transforms.ToTensor()
+    ])
+    from glob import glob
+    import time
+    # Charger l'image
+    immagess = glob(path)
+    #immagess = ["/Users/john/Desktop/0195377001666708189.jpg"]
+    for ima in immagess:
+        img_path = ima
+        img = Image.open(img_path).convert("RGB")  # s'assure que c'est en 3 canaux
+
+        # Appliquer le transform et ajouter une dimension batch
+        img_tensor = transform(img).unsqueeze(0)  # shape: [1, 3, 128, 128]
+
+        # Mettre le modèle en mode evaluation
+        model.eval()
+        with torch.no_grad():  # pas de gradient nécessaire
+            output = model(img_tensor)
+            prob = output.item()  # sortie scalaire
+            label = 1 if prob > 0.5 else 0
+
+        print(f"Probabilité d'être une peinture: {prob:.3f}")
+        print(f"Label prédit: {label}")
+        img.show()
+        time.sleep(4)
+
+
 if __name__ == "__main__":
     model = AbstractDetector()
     model.load_state_dict(torch.load("models/abstract_cnn.pth"))

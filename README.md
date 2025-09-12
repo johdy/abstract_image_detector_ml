@@ -1,6 +1,6 @@
 # Abstract Detector
 
-Abstract Detector est un projet de classification d'image par le Machine Learning. Il implémente un réseau neuronal convolutionnel (CNN) simple qui est entraîné à distinguer les images abstraites des images avec des élements reconnaissables. Il s'agit d'un pipeline complet d'entraînement, puis évaluation et enfin déploiement minimal.
+Abstract Detector est un projet de classification d'image par le Machine Learning. Il implémente un réseau neuronal convolutionnel (CNN) simple qui est entraîné à distinguer les images abstraites des images avec des éléments reconnaissables. Il s'agit d'un pipeline complet d'entraînement, puis évaluation et enfin déploiement minimal.
 
 ## Structure
 
@@ -20,6 +20,8 @@ Le projet utilise kagglehub pour récupérer automatiquement les datasets :
 Le dataset est équilibré pour être parfaitement divisé en deux, et fait une taille totale de 8990. Il est divisé en un dataset d'entraînement (train_dataset) et un dataset de test (test_dataset).
 
 ## Model
+
+Les images sont d'abord redimensionnés en 128*128 pixels.
 
 Le modèle est un CNN simple, composé de :
 - 2 blocs convolutionnels enchaînés
@@ -44,7 +46,7 @@ pip install -r requirements.txt
 ```bash
 python src/train.py
 ```
-Les hyperparamètres sont configurés dans train_model.py.
+Les hyperparamètres sont configurés dans `train.py`.
 Le modèle et le dataset de test sont sauvegardés dans le dossier `models`.
 
 
@@ -53,7 +55,7 @@ Le modèle et le dataset de test sont sauvegardés dans le dossier `models`.
 ```bash
 python src/evaluate.py
 ```
-Evalue l'accuraycy sur le dataset de test sauvegardé dans le dossier `models`.
+Evalue l'accuracy sur le dataset de test sauvegardé dans le dossier `models`.
 
 ## Déploiement
 
@@ -63,3 +65,17 @@ Une API RESTful minimale via Flask est accessible.
 python src/deploy.py
 curl -X POST -F "file=@FILE.jpg" http://127.0.0.1:5000/predict
 ```
+
+Sortie attendue :
+
+```json
+{
+  "prediction": "abstract",
+  "confidence": 0.87
+}
+```
+## What's next ?
+
+- Déploiement sur AWS EC2
+- Intégration Docker pour portabilité
+- Développement monitoring de l'entraînement et métriques d’erreurs
