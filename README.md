@@ -27,7 +27,7 @@ cd abstract_image_detector_ml
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
+```
 
 ## Entraînement
 
