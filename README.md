@@ -16,6 +16,7 @@ Le modèle est un CNN simple, composé de :
 - 2 blocs convolutionnels enchaînés
 - 2 blocs linéaires
 - Une fonction sigmoid en sortie, pour classification binaire.
+
 Le tout agrémenté de fonctions ReLU d'activations et de downsamplings.
 
 ## Installation
