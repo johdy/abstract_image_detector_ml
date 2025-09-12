@@ -5,17 +5,17 @@ Abstract Detector est un projet de classification d'image par le Machine Learnin
 ## Dataset
 
 Le projet utilise kagglehub pour récupérer automatiquement les datasets :
-    . Un dataset de photographies, composé de "pankajkumar2002/random-image-sample-dataset" (photographies de nature) et de "ahmadahmadzada/images2000" (photographies d'êtres humains)
-    . Un dataset de peintures abstraites, composé d'un subset de "steubk/wikiart", sélectionnant les peintures de genre "Abstract_Expressionism", "Action_painting" et "Color_Field_Painting".
+- Un dataset de photographies, composé de "pankajkumar2002/random-image-sample-dataset" (photographies de nature) et de "ahmadahmadzada/images2000" (photographies d'êtres humains)
+- Un dataset de peintures abstraites, composé d'un subset de "steubk/wikiart", sélectionnant les peintures de genre "Abstract_Expressionism", "Action_painting" et "Color_Field_Painting".
 
 Le dataset est équilibré pour être parfaitement divisé en deux, et fait une taille totale de 8990. Il est divisé en un dataset d'entraînement (train_dataset) et un dataset de test (test_dataset).
 
 ## Model
 
 Le modèle est un CNN simple, composé de :
-    - 2 blocs convolutionnels enchaînés
-    - 2 blocs linéaires
-    - Une fonction sigmoid en sortie, pour classification binaire.
+- 2 blocs convolutionnels enchaînés
+- 2 blocs linéaires
+- Une fonction sigmoid en sortie, pour classification binaire.
 Le tout agrémenté de fonctions ReLU d'activations et de downsamplings.
 
 ## Installation
