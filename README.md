@@ -1,12 +1,21 @@
 # Abstract Detector
 
-Abstract Detector est un projet de classification d'image par le Machine Learning. Il implémente un réseau neuronal convolutionnel (CNN) simple qui est entraîné à distinguer les images abstraites des images avec des élements reconnaissables. Il s'agit d'un pipeline complet d'entraînement, puis évaluation et enfin déploiement minimal
+Abstract Detector est un projet de classification d'image par le Machine Learning. Il implémente un réseau neuronal convolutionnel (CNN) simple qui est entraîné à distinguer les images abstraites des images avec des élements reconnaissables. Il s'agit d'un pipeline complet d'entraînement, puis évaluation et enfin déploiement minimal.
+
+## Structure
+
+- `dataset.py` : chargement, division train/test, transformations
+- `model.py` : définition du CNN
+- `train.py` : boucle d’entraînement, sauvegarde du modèle
+- `evaluate.py` : évaluation sur le dataset test
+- `deploy.py` : service Flask pour tester le modèle via requêtes HTTP
+
 
 ## Dataset
 
 Le projet utilise kagglehub pour récupérer automatiquement les datasets :
-- Un dataset de photographies, composé de "pankajkumar2002/random-image-sample-dataset" (photographies de nature) et de "ahmadahmadzada/images2000" (photographies d'êtres humains)
-- Un dataset de peintures abstraites, composé d'un subset de "steubk/wikiart", sélectionnant les peintures de genre "Abstract_Expressionism", "Action_painting" et "Color_Field_Painting".
+- Un dataset de photographies, composé de `pankajkumar2002/random-image-sample-dataset"`(photographies de nature) et de `ahmadahmadzada/images2000` (photographies d'êtres humains)
+- Un dataset de peintures abstraites, composé d'un subset de `steubk/wikiart`, sélectionnant les peintures de genre "Abstract_Expressionism", "Action_painting" et "Color_Field_Painting".
 
 Le dataset est équilibré pour être parfaitement divisé en deux, et fait une taille totale de 8990. Il est divisé en un dataset d'entraînement (train_dataset) et un dataset de test (test_dataset).
 
@@ -36,7 +45,7 @@ pip install -r requirements.txt
 python src/train.py
 ```
 Les hyperparamètres sont configurés dans train_model.py.
-Le modèle et le dataset de test sont sauvegardés dans le dossier models.
+Le modèle et le dataset de test sont sauvegardés dans le dossier `models`.
 
 
 ## Evaluation
@@ -44,7 +53,7 @@ Le modèle et le dataset de test sont sauvegardés dans le dossier models.
 ```bash
 python src/evaluate.py
 ```
-Evalue l'accuraycy sur le dataset de test sauvegardé dans le dossier models.
+Evalue l'accuraycy sur le dataset de test sauvegardé dans le dossier `models`.
 
 ## Déploiement
 
