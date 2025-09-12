@@ -36,7 +36,7 @@ pip install -r requirements.txt
 python src/train.py
 ```
 Les hyperparamètres sont configurés dans train_model.py.
-Le modèle et le dataset de test sont sauvegardés dans models/
+Le modèle et le dataset de test sont sauvegardés dans le dossier models.
 
 
 ## Evaluation
@@ -44,11 +44,11 @@ Le modèle et le dataset de test sont sauvegardés dans models/
 ```bash
 python src/evaluate.py
 ```
-Evalue l'accuraycy sur le dataset de test sauvegardé dans models/
+Evalue l'accuraycy sur le dataset de test sauvegardé dans le dossier models.
 
 ## Déploiement
 
-Une API RESTful minimale via Flask est accessible
+Une API RESTful minimale via Flask est accessible.
 
 ```bash
 python src/deploy.py
